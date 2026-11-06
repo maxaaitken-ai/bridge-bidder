@@ -5,17 +5,14 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+import json
 
-json_path = os.path.join(
-    BASE_DIR,
-    "bridge-bidder-7a8da-firebase-adminsdk-fbsvc-69778375d9.json"
+firebase_json = json.loads(
+    os.environ["FIREBASE_CREDENTIALS"]
 )
 
-print("JSON =", json_path)
-print("EXISTS =", os.path.exists(json_path))
+cred = credentials.Certificate(firebase_json)
 
-cred = credentials.Certificate(json_path)
 
 firebase_admin.initialize_app(cred)
 
