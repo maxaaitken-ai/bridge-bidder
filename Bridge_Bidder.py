@@ -67,6 +67,7 @@ def player_col(player):
 def main(page):
     import threading
     import time
+    page.theme_mode = ft.ThemeMode.DARK
     my_player = None
     valid_calls = [
         "pass", "x", "xx",
